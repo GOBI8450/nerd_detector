@@ -9,4 +9,4 @@ Ultrasonic sensor
 breadboard
 
 
-*this dosent really tracking which one is a nerd who isnt but it is really funny project.
+*this code and project does not really identify which one is a nerd who isnt a nerd sadly. but it is really funny project.
