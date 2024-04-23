@@ -1,41 +1,39 @@
-#define echoPin 2 // attach pin D2 Arduino to pin Echo of HC-SR04
-#define trigPin 3 // attach pin D3 Arduino to pin Trig of HC-SR04
+#define echoPin 2 
+#define trigPin 3 
 
-// Defines variables
-long duration; // variable for the duration of sound wave travel
-int distance; // variable for the distance measurement
+long duration; // duration of sound wave travel
+int distance; // distance measurement
+
 
 int MeasureDistance() {
-  // Clears the trigPin condition
+  // clears the trigPin condition
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   
-  // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
+  // sets the trigPin HIGH for 10 microseconds
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
   
-  // Reads the echoPin, returns the sound wave travel time in microseconds
+  // reads the echoPin, so it returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
   
-  // Calculating the distance
-  distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
+  // calculating the distance
+  distance = duration * 0.034 / 2; // speed of sound wave divided by 2
   
   return distance;
 }
 
 void setup() {
-  pinMode(trigPin, OUTPUT); // Sets the trigPin as an OUTPUT
-  pinMode(echoPin, INPUT); // Sets the echoPin as an INPUT
-  Serial.begin(9600); // Serial Communication is starting with 9600 of baudrate speed
+  pinMode(trigPin, OUTPUT); 
+  pinMode(echoPin, INPUT); 
+  Serial.begin(9600);
 }
 
 void loop() {
-  int distance = MeasureDistance(); // Measure the distance
+  int distance = MeasureDistance(); // call the MeasureDistance Function
   
-  // Send the distance value to Python
+  // Send the distance to Python
   Serial.println(distance);
-  
-  // Delay before the next measurement
-  delay(100); // Adjust as needed
+  delay(100);
 }
